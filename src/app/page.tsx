@@ -1,95 +1,62 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Image from 'next/image';
+import Head from 'next/head';
+import styles from './page.module.css';
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    <>
+      <Head>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@700;800&family=Karla:wght@400;700&display=swap" rel="stylesheet" />
+      </Head>
+      <div className={styles.root}>
+        {/* Hero Section */}
+        <section className={styles.heroSection}>
+          {/* Left: Text */}
+          <div className={styles.heroText}>
+            <h1>
+              I'm <span style={{ color: '#fff' }}>Frank Lynam</span><br />
+              <span style={{ color: '#e38525' }}>Engineering Leader</span>
+            </h1>
+            <p className={styles.bodyText}>
+              A blend of creativity, empathy, and technical expertise. I strive to design and build solutions that not only work, but delight users at every interaction.
+            </p>
+            <div className={styles.ctas}>
+              <a href="#" className={styles.ctaPrimary + ' ' + styles.bodyText}>
+                Download Resume
+              </a>
+              <a href="#" className={styles.ctaSecondary + ' ' + styles.bodyText}>
+                <span>▶</span>
+                Intro Video
+              </a>
+            </div>
+          </div>
+          {/* Right: Headshot */}
+          <div className={styles.heroHeadshot}>
+            <Image src="/flynam.png" alt="Frank Lynam" fill style={{ objectFit: 'cover' }} />
+          </div>
+        </section>
+      </div>
+      <style>{`
+        @media (max-width: 900px) {
+          section[style*='display: flex'] {
+            flex-direction: column;
+            align-items: stretch !important;
+          }
+          section[style*='display: flex'] > div:last-child {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            max-width: 100vw !important;
+          }
+          .hero-text {
+            margin-top: 400px !important;
+          }
+        }
+        @media (max-width: 550px) {
+          .hero-text {
+            margin-top: 200px !important;
+          }
+        }
+      `}</style>
+    </>
   );
-}
+} 
