@@ -10,7 +10,7 @@ export default function Home() {
           {/* Left: Text */}
           <div className="max-w-xl z-20 mt-50 lg:mt-0">
             <h1 className="text-paletteWhite text-3xl md:text-4xl font-medium mb-4">
-              Hi. I'm <span className="text-[#cf5250]">Frank</span><br />
+              Hi. I&apos;m <span className="text-[#cf5250]">Frank</span><br />
               Engineering Leader
             </h1>
             <p className="text-paletteWhite brightness-[90%] text-base">

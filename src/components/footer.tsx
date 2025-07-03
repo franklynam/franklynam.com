@@ -4,10 +4,10 @@ export default function Footer() {
   return (
     <footer className="bg-[#17181c] text-[#ededed] py-8 pb-4 text-center mt-auto brightness-90">
       <div className="mb-4 text-sm">
-        <a href="/" className="mx-4 hover:text-white transition-colors">home</a>
-        <a href="/about" className="mx-4 hover:text-white transition-colors">about</a>
-        <a href="/contact" className="mx-4 hover:text-white transition-colors">contact</a>
-        <a href="/blog" className="mx-4 hover:text-white transition-colors">blog</a>
+        <Link href="/" className="mx-4 hover:text-white transition-colors">home</Link>
+        <Link href="/about" className="mx-4 hover:text-white transition-colors">about</Link>
+        <Link href="/contact" className="mx-4 hover:text-white transition-colors">contact</Link>
+        <Link href="/blog" className="mx-4 hover:text-white transition-colors">blog</Link>
       </div>
       <div className="mb-4 flex justify-center items-center">
         <Link href="https://twitter.com" target="_blank" rel="noopener" className="mx-2 hover:text-white transition-colors" aria-label="Twitter">
