@@ -1,37 +1,38 @@
 'use client';
 
 import Image from 'next/image';
-import styles from './header.module.css';
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
     return (
-        <header>
-            <nav style={{width: '100%', background: 'transparent', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '2rem 1rem 1rem 0', position: 'absolute', top: 0, left: 0, zIndex: 10}}>
-                <div style={{display: 'flex', alignItems: 'center', gap: '2rem', flex: 1, marginLeft: '1rem'}}>
-                    <a href="/" style={{display: 'flex', alignItems: 'center'}}>
-                        <Image src="/title+logo.png" alt="Logo" height={30} width={140} style={{height: 30, width: 'auto', objectFit: 'contain'}} className={styles.headerFullLogo} />
-                        <Image src="/logo.png" alt="Logo" height={40} width={40} style={{height: 40, width: 40, objectFit: 'contain'}} className={styles.headerMobileLogo} />
-                    </a>
+        <header className="site-header relative top-0 left-0 w-full z-11">
+            <nav className="w-full bg-transparent flex justify-center items-center py-8 px-4 absolute top-0 left-0 z-10">
+                <div className="flex items-center gap-8 flex-1 ml-4">
+                    <Link href="/" className="flex items-center">
+                        {/* Full logo for md+ screens, mobile logo for sm screens */}
+                        <Image src="/title+logo.png" alt="Logo" height={60} width={140} className="hidden sm:inline h-[50px] w-auto object-contain" />
+                        <Image src="/logo.png" alt="Logo" height={40} width={40} className="inline sm:hidden h-[40px] w-[40px] object-contain" />
+                    </Link>
                 </div>
-                <ul className={styles.navLinks} style={{display: 'flex', gap: '2.5rem', listStyle: 'none', fontSize: '1.2rem', fontWeight: 400, color: '#ededed', margin: 0}}>
-                    <li><a href="/">HOME</a></li>
-                    <li><a href="/about">ABOUT</a></li>
-                    <li><a href="/contact">CONTACT</a></li>
-                    <li><a href="/blog">BLOG</a></li>
+                <ul className="site-nav hidden md:flex gap-10 list-none">
+                    <li><Link href="/">home</Link></li>
+                    <li><Link href="/about">about</Link></li>
+                    <li><Link href="/contact">contact</Link></li>
+                    <li><Link href="/blog">blog</Link></li>
                 </ul>
-                <button className={styles.hamburger} aria-label="Open menu" onClick={() => setMenuOpen(v => !v)}>
-                    <span className={styles.bar}></span>
-                    <span className={styles.bar}></span>
-                    <span className={styles.bar}></span>
+                <button className="flex md:hidden flex-col justify-center items-center w-10 h-10 bg-none border-none z-20 cursor-pointer" aria-label="Open menu" onClick={() => setMenuOpen(v => !v)}>
+                    <span className="w-7 h-[3px] bg-[#ededed] my-1 rounded transition-all"></span>
+                    <span className="w-7 h-[3px] bg-[#ededed] my-1 rounded transition-all"></span>
+                    <span className="w-7 h-[3px] bg-[#ededed] my-1 rounded transition-all"></span>
                 </button>
                 {menuOpen && (
-                    <div className={styles.dropdownMenu}>
-                        <a href="/" onClick={() => setMenuOpen(false)}>HOME</a>
-                        <a href="/about" onClick={() => setMenuOpen(false)}>ABOUT</a>
-                        <a href="/contact" onClick={() => setMenuOpen(false)}>CONTACT</a>
-                        <a href="/blog" onClick={() => setMenuOpen(false)}>BLOG</a>
+                    <div className="site-nav-mobile flex flex-col absolute top-[70px] right-[2vw] bg-[#23272f] rounded-xl shadow-lg p-6 z-[100] min-w-[160px] md:hidden">
+                        <Link href="/" onClick={() => setMenuOpen(false)}>home</Link>
+                        <Link href="/about" onClick={() => setMenuOpen(false)}>about</Link>
+                        <Link href="/contact" onClick={() => setMenuOpen(false)}>contact</Link>
+                        <Link href="/blog" onClick={() => setMenuOpen(false)}>blog</Link>
                     </div>
                 )}
             </nav>

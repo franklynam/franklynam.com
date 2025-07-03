@@ -1,42 +1,48 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import "tailwindcss";
+
+@theme {
+    --color-paletteBlack: #0d0e22;
+    --color-paletteBlack2: #000000;
+    --color-paletteGold: #e38525;
+    --color-paletteWhite: #fbf5f3;
+    --color-paletteRed: #cf5250;
+
+    --font-montserrat: "Montserrat", "sans-serif"; 
+    --font-raleway: "Raleway", "sans-serif";
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+    h1 {
+        @apply font-mono text-paletteBlack text-4xl md:text-5xl font-medium mb-4;
+    }   
+    h2 {
+        @apply font-mono text-paletteBlack text-2xl md:text-3xl font-medium mb-4;
+    }   
+    h3 {
+        @apply font-mono text-paletteBlack text-xl md:text-2xl  mb-10 max-w-lg;
+    }
+    p {
+        @apply font-mono text-paletteBlack text-base mb-10 max-w-lg;
+    }
+    a, li, div, span {
+        @apply font-mono;
+    }
+    .main-button {
+        @apply px-8 py-3 text-base rounded-none font-mono flex items-center gap-2 no-underline;
+    }
+    .circle-number {
+        @apply text-paletteWhite rounded-full w-9 h-9 flex items-center justify-center font-bold text-lg;
+    }
+    .strengths-section {
+        @apply text-paletteBlack;
+    }
+    .site-header {
+        @apply bg-paletteBlack text-paletteWhite font-mono text-base;
+        .site-nav, .site-nav-mobile {
+            @apply font-mono text-[1rem] font-normal text-paletteWhite m-0;
+        }
+        .site-nav-mobile {
+            @apply m-0 gap-2;
+        }
+    }
   }
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: 'Playfair Display', serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
