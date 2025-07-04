@@ -82,7 +82,9 @@ export default function Footer() {
       </div>
       {/* Bottom row */}
       <div className="flex flex-col md:flex-row justify-between items-center mt-8 text-xs gap-2 text-paletteWhite opacity-80">
-        <div>Made by Frank Lynam</div>
+        <div>
+          Made by Frank Lynam using Next.js and Tailwind. Hosted on AWS Amplify.
+        </div>
         <div>&copy; 2025 Frank Lynam</div>
       </div>
     </footer>
