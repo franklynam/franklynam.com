@@ -10,7 +10,7 @@ export default function PersonalRecommendationsCarousel() {
     },
     {
       name: "Casey Sackett, CTO at Quizlet",
-      text: "Frank is the yes-man you want as a partner and lead on your engineering team. He has incredibly high work ethic, is always dependable, with a positive attitude and willingness to tackle difficult business problems to bring company value.",
+      text: "He has incredibly high work ethic, is always dependable, with a positive attitude and willingness to tackle difficult business problems to bring company value.",
     },
   ];
   const [current, setCurrent] = useState(0);
@@ -49,7 +49,7 @@ export default function PersonalRecommendationsCarousel() {
   return (
     <div className="w-full max-w-xl mx-auto flex flex-col items-center">
       <div
-        className="relative w-full rounded-xl p-2 md:p-8 flex flex-col items-center min-h-[220px] bg-transparent shadow-none touch-pan-y"
+        className="relative w-full rounded-xl p-2 md:p-8 flex flex-col items-center bg-transparent shadow-none touch-pan-y"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
