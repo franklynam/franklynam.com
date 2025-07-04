@@ -1,48 +1,52 @@
 @import "tailwindcss";
 
 @theme {
-    --color-paletteBlack: #0d0e22;
-    --color-paletteBlack2: #000000;
-    --color-paletteGold: #e38525;
-    --color-paletteWhite: #fbf5f3;
-    --color-paletteRed: #cf5250;
+  --color-paletteBlack: #0d0e22;
+  --color-paletteBlack2: #000000;
+  --color-paletteGold: #e38525;
+  --color-paletteWhite: #fbf5f3;
+  --color-paletteRed: #cf5250;
 
-    --font-montserrat: "Montserrat", "sans-serif"; 
-    --font-raleway: "Raleway", "sans-serif";
+  --font-montserrat: "Montserrat", "sans-serif";
+  --font-raleway: "Raleway", "sans-serif";
 }
 
 @layer base {
-    h1 {
-        @apply font-mono text-paletteBlack text-4xl md:text-5xl font-medium mb-4;
-    }   
-    h2 {
-        @apply font-mono text-paletteBlack text-2xl md:text-3xl font-medium mb-4;
-    }   
-    h3 {
-        @apply font-mono text-paletteBlack text-xl md:text-2xl  mb-10 max-w-lg;
+  h1 {
+    @apply font-mono text-paletteBlack text-4xl md:text-5xl font-medium mb-4;
+  }
+  h2 {
+    @apply font-mono text-paletteBlack text-2xl md:text-3xl font-medium mb-4;
+  }
+  h3 {
+    @apply font-mono text-paletteBlack text-xl md:text-2xl  mb-10 max-w-lg;
+  }
+  p {
+    @apply font-mono text-paletteBlack text-base mb-10 max-w-lg;
+  }
+  a,
+  li,
+  div,
+  span {
+    @apply font-mono;
+  }
+  .main-button {
+    @apply px-4 py-2 md:px-8 md:py-3 text-base rounded-none font-mono flex items-center gap-2 no-underline;
+  }
+  .circle-number {
+    @apply text-paletteWhite bg-paletteGold w-12 aspect-square flex items-center justify-center font-bold text-lg rounded-full;
+  }
+  .strengths-section {
+    @apply text-paletteBlack;
+  }
+  .site-header {
+    @apply bg-paletteBlack text-paletteWhite font-mono text-base;
+    .site-nav,
+    .site-nav-mobile {
+      @apply font-mono text-[1rem] font-normal text-paletteWhite m-0;
     }
-    p {
-        @apply font-mono text-paletteBlack text-base mb-10 max-w-lg;
-    }
-    a, li, div, span {
-        @apply font-mono;
-    }
-    .main-button {
-        @apply px-8 py-3 text-base rounded-none font-mono flex items-center gap-2 no-underline;
-    }
-    .circle-number {
-        @apply text-paletteWhite rounded-full w-9 h-9 flex items-center justify-center font-bold text-lg;
-    }
-    .strengths-section {
-        @apply text-paletteBlack;
-    }
-    .site-header {
-        @apply bg-paletteBlack text-paletteWhite font-mono text-base;
-        .site-nav, .site-nav-mobile {
-            @apply font-mono text-[1rem] font-normal text-paletteWhite m-0;
-        }
-        .site-nav-mobile {
-            @apply m-0 gap-2;
-        }
+    .site-nav-mobile {
+      @apply m-0 gap-2;
     }
   }
+}
