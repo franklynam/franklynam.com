@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export default function PersonalRecommendationsCarousel() {
   const recommendations = [
@@ -15,13 +15,45 @@ export default function PersonalRecommendationsCarousel() {
   ];
   const [current, setCurrent] = useState(0);
   const total = recommendations.length;
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
 
   const prev = () => setCurrent((c) => (c - 1 + total) % total);
   const next = () => setCurrent((c) => (c + 1) % total);
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+
+    const distance = touchStartX.current - touchEndX.current;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      next();
+    } else if (isRightSwipe) {
+      prev();
+    }
+
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
   return (
     <div className="w-full max-w-xl mx-auto flex flex-col items-center">
-      <div className="relative w-full rounded-xl p-2 md:p-8 flex flex-col items-center min-h-[220px] bg-transparent shadow-none">
+      <div
+        className="relative w-full rounded-xl p-2 md:p-8 flex flex-col items-center min-h-[220px] bg-transparent shadow-none touch-pan-y"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <p className="text-sm md:text-lg text-paletteBlack text-center mb-4 italic">
           &ldquo;{recommendations[current].text}&rdquo;
         </p>

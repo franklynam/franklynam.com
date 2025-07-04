@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import PersonalRecommendationsCarousel from "@/components/PersonalRecommendationsCarousel";
@@ -50,7 +48,7 @@ export default function Home() {
           </div>
         </section>
         {/* Carousel Section: Personal Recommendations */}
-        <section className="flex items-center justify-center py-10 px-[4vw] relative z-10 flex-wrap bg-paletteWhite min-h-[30vh]">
+        <section className="flex items-center justify-center py-10 px-[4vw] relative z-10 flex-wrap bg-paletteWhite min-h-[30vh] md:min-h-[42vh]">
           <PersonalRecommendationsCarousel />
         </section>
         {/* Strengths Section */}
