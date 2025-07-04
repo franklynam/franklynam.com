@@ -1,5 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import PersonalRecommendationsCarousel from "@/components/PersonalRecommendationsCarousel";
+import ImageGrid from "@/components/ImageGrid";
 
 export default function Home() {
   return (
@@ -20,8 +24,10 @@ export default function Home() {
             </p>
             <div className="flex gap-4 items-center mb-10">
               <Link
-                href="#"
+                href="/franklynam-resume-may2025-v1.pdf"
                 className="main-button bg-paletteRed text-white text-sm md:text-base"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Download Resume
               </Link>
@@ -43,68 +49,15 @@ export default function Home() {
             />
           </div>
         </section>
+        {/* Carousel Section: Personal Recommendations */}
+        <section className="flex items-center justify-center py-10 px-[4vw] relative z-10 flex-wrap bg-paletteWhite min-h-[30vh]">
+          <PersonalRecommendationsCarousel />
+        </section>
         {/* Strengths Section */}
-        <section className="flex items-center justify-between py-10 px-[4vw] relative z-10 flex-wrap bg-[#fbf5f3]">
-          {/* Left: Trophy Icon */}
-          <div className="flex-1 justify-center items-start min-w-[220px] mb-10 hidden md:flex">
-            <Image src="/wins.png" alt="Trophy" width={500} height={500} />
-          </div>
-          {/* Right: Strengths List */}
-          <div className="strengths-section flex-2 flex flex-col gap-8 min-w-[280px]">
-            <h2 className="text-paletteBlack">What I bring to the table</h2>
-            <div className="flex flex-col">
-              <div className="flex items-start gap-4">
-                <div className="circle-number bg-paletteGold">1</div>
-                <div>
-                  <h3>Leadership</h3>
-                  <p>
-                    I lead teams with empathy, clarity, and a focus on growth
-                    and collaboration.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="circle-number bg-paletteRed">2</div>
-                <div>
-                  <h3>Hands-on Approach</h3>
-                  <p>I enjoy getting stuck in and getting my hands dirty.</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="circle-number bg-paletteBlack2">3</div>
-                <div>
-                  <h3>System Design</h3>
-                  <p>
-                    I architect robust systems that balance performance,
-                    reliability, and maintainability.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+        <section className="flex items-center justify-between relative z-10 flex-wrap bg-[#181818]">
+          <ImageGrid />
         </section>
       </div>
-      <style>{`
-        @media (max-width: 900px) {
-          section[style*='display: flex'] {
-            flex-direction: column;
-            align-items: stretch !important;
-          }
-          section[style*='display: flex'] > div:last-child {
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-            max-width: 100vw !important;
-          }
-          .hero-text {
-            margin-top: 400px !important;
-          }
-        }
-        @media (max-width: 550px) {
-          .hero-text {
-            margin-top: 200px !important;
-          }
-        }
-      `}</style>
     </>
   );
 }

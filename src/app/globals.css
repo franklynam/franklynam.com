@@ -13,16 +13,16 @@
 
 @layer base {
   h1 {
-    @apply font-mono text-paletteBlack text-4xl md:text-5xl font-medium mb-4;
+    @apply font-mono text-paletteWhite text-4xl md:text-5xl font-medium mb-4;
   }
   h2 {
-    @apply font-mono text-paletteBlack text-2xl md:text-3xl font-medium mb-4;
+    @apply font-mono text-paletteWhite text-2xl md:text-3xl font-medium mb-4;
   }
   h3 {
-    @apply font-mono text-paletteBlack text-xl md:text-2xl  mb-10 max-w-lg;
+    @apply font-mono text-paletteWhite text-xl md:text-2xl  mb-10 max-w-lg;
   }
   p {
-    @apply font-mono text-paletteBlack text-base mb-10 max-w-lg;
+    @apply font-mono text-paletteWhite text-base mb-10 max-w-lg;
   }
   a,
   li,
@@ -38,6 +38,10 @@
   }
   .strengths-section {
     @apply text-paletteBlack;
+    h3,
+    p {
+      @apply text-paletteBlack;
+    }
   }
   .site-header {
     @apply bg-paletteBlack text-paletteWhite font-mono text-base;

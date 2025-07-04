@@ -33,13 +33,12 @@ export default function Header() {
             <Link href="/">home</Link>
           </li>
           <li>
-            <Link href="/about">about</Link>
-          </li>
-          <li>
             <Link href="/contact">contact</Link>
           </li>
           <li>
-            <Link href="/blog">blog</Link>
+            <Link href="https://franklynam.substack.com" target="_blank">
+              substack
+            </Link>
           </li>
         </ul>
         <button
@@ -79,14 +78,11 @@ export default function Header() {
             <Link href="/" onClick={() => setMenuOpen(false)}>
               home
             </Link>
-            <Link href="/about" onClick={() => setMenuOpen(false)}>
-              about
-            </Link>
             <Link href="/contact" onClick={() => setMenuOpen(false)}>
               contact
             </Link>
-            <Link href="/blog" onClick={() => setMenuOpen(false)}>
-              blog
+            <Link href="https://franklynam.substack.com" target="_blank">
+              substack
             </Link>
           </div>
         </nav>
