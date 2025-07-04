@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 
 interface GridItem {
   src: string;
@@ -10,6 +13,8 @@ interface GridItem {
 }
 
 export default function ImageGrid() {
+  const [activeCard, setActiveCard] = useState<number | null>(null);
+
   const strengthsItems: GridItem[] = [
     {
       src: "/obama.jpg",
@@ -40,28 +45,44 @@ export default function ImageGrid() {
         <div
           key={index}
           className="relative w-full md:w-1/2 lg:w-1/3 aspect-square overflow-hidden rounded-none group shadow-lg"
+          onTouchStart={() => setActiveCard(index)}
+          onTouchEnd={() => setActiveCard(null)}
         >
           <Image
             src={item.src}
             alt={item.alt}
             fill
             style={{ objectFit: "cover" }}
-            className="transition-transform duration-300 group-hover:scale-105"
+            className={`transition-transform duration-300 group-hover:scale-105 ${
+              activeCard === index ? "scale-105" : ""
+            }`}
           />
           <div
-            className={`absolute inset-0 bg-black/20 group-hover:bg-paletteWhite/80 transition-colors duration-300 ${
-              item.overlayColor ? item.overlayColor : ""
+            className={`absolute inset-0 bg-black/20 transition-colors duration-300 ${
+              activeCard === index
+                ? "bg-paletteWhite/80"
+                : "group-hover:bg-paletteWhite/80"
+            } ${
+              item.overlayColor && activeCard !== index ? item.overlayColor : ""
             }`}
           />
           <div className="absolute bottom-8 left-0 w-full flex flex-col items-center text-center px-4 z-10">
             <h3
-              className={`text-white font-bold drop-shadow-lg group-hover:text-paletteBlack ${
-                item.titleSize || "text-2xl"
-              }`}
+              className={`text-white font-bold drop-shadow-lg transition-colors duration-300 ${
+                activeCard === index
+                  ? "text-paletteBlack"
+                  : "group-hover:text-paletteBlack"
+              } ${item.titleSize || "text-2xl"}`}
             >
               {item.title}
             </h3>
-            <p className="text-white text-lg drop-shadow-md mt-2 group-hover:text-paletteBlack">
+            <p
+              className={`text-white text-lg drop-shadow-md mt-2 transition-colors duration-300 ${
+                activeCard === index
+                  ? "text-paletteBlack"
+                  : "group-hover:text-paletteBlack"
+              }`}
+            >
               {item.description}
             </p>
           </div>
