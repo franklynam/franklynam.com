@@ -1,0 +1,92 @@
+import Link from "next/link";
+
+export default function Footer() {
+  return (
+    <footer className="bg-paletteBlack text-paletteWhite font-mono pt-8 pb-4 px-4 md:px-16 mt-auto">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end w-full">
+        {/* Left: Huge FRANK */}
+        <div className="text-[12vw] md:text-[8vw] leading-none font-bold text-paletteRed tracking-tight select-none">
+          FRANK
+        </div>
+        {/* Right: Let's Talk */}
+        <div className="flex-1 flex flex-col items-end justify-end mt-4 md:mt-0">
+          <span className="text-paletteRed text-4xl md:text-6xl font-normal mb-2">
+            Let&apos;s Talk
+          </span>
+        </div>
+      </div>
+      {/* Columns */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8 text-base">
+        {/* Contact */}
+        <div>
+          <div className="text-paletteRed text-xs mb-2 uppercase tracking-widest">
+            Contact
+          </div>
+          <div>Frank Lynam</div>
+          <div>frank@franklynam.com</div>
+        </div>
+        {/* Socials */}
+        <div>
+          <div className="text-paletteRed text-xs mb-2 uppercase tracking-widest">
+            Follow Me
+          </div>
+          <Link
+            href="https://instagram.com/flynam"
+            className="block hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Instagram
+          </Link>
+          <Link
+            href="https://linkedin.com/in/frank-lynam"
+            className="block hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </Link>
+        </div>
+        {/* Substack */}
+        <div>
+          <div className="text-paletteRed text-xs mb-2 uppercase tracking-widest">
+            Substack
+          </div>
+          <div className="mb-2">Sign up below</div>
+          <form className="flex flex-col">
+            <label
+              htmlFor="footer-email"
+              className="text-paletteRed text-2xl mb-1"
+            >
+              Email
+            </label>
+            <div className="flex items-center border-b border-paletteRed">
+              <input
+                id="footer-email"
+                type="email"
+                placeholder=""
+                className="bg-transparent outline-none flex-1 py-1 px-0 text-lg text-paletteRed placeholder-paletteRed"
+              />
+              <button
+                type="submit"
+                className="text-paletteRed text-2xl ml-2 pb-1 hover:text-paletteBlack transition-colors"
+              >
+                →
+              </button>
+            </div>
+          </form>
+          <div className="text-xs text-paletteBlack mt-2 opacity-70">
+            By subscribing, you agree to receive updates from Frank Lynam.
+          </div>
+        </div>
+      </div>
+      {/* Bottom row */}
+      <div className="flex flex-col md:flex-row justify-between items-center mt-8 text-xs gap-2 text-paletteWhite opacity-80">
+        <div>
+          Made by Frank Lynam using Next.js and Tailwind. Hosted on AWS Amplify.
+        </div>
+        <div>&copy; 2025 Frank Lynam</div>
+      </div>
+    </footer>
+  );
+}
