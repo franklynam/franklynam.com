@@ -12,7 +12,8 @@ export default function Home() {
           {/* Left: Text */}
           <div className="max-w-xl z-20 mt-50 ">
             <h1 className="text-paletteWhite text-3xl md:text-4xl font-medium mb-4">
-              Hi. I&apos;m <span className="text-[#cf5250]">Frank</span>
+              Hi. I&apos;m{" "}
+              <span className="text-paletteRed uppercase font-bold">Frank</span>
               <br />
               Engineering Leader
             </h1>
@@ -48,7 +49,7 @@ export default function Home() {
           </div>
         </section>
         {/* Carousel Section: Personal Recommendations */}
-        <section className="flex items-center justify-center px-[4vw] relative z-10 flex-wrap bg-paletteWhite min-h-[20vh] md:min-h-[30vh]">
+        <section className="flex items-center justify-center px-[4vw] relative z-10 flex-wrap bg-paletteWhite min-h-[26vh] md:min-h-[30vh]">
           <PersonalRecommendationsCarousel />
         </section>
         {/* Strengths Section */}
