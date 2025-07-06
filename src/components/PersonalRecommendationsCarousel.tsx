@@ -60,21 +60,6 @@ export default function PersonalRecommendationsCarousel() {
         <span className="font-semibold text-paletteBlack text-sm md:text-base text-center">
           {recommendations[current].name}
         </span>
-        {/* Navigation Arrows */}
-        <button
-          onClick={prev}
-          aria-label="Previous"
-          className="absolute left-2 top-1/2 -translate-y-1/2 text-4xl text-gray-400 hover:text-paletteBlack2 transition-colors p-0 bg-transparent shadow-none border-none hidden md:block"
-        >
-          &#8592;
-        </button>
-        <button
-          onClick={next}
-          aria-label="Next"
-          className="absolute right-2 top-1/2 -translate-y-1/2 text-4xl text-gray-400 hover:text-paletteBlack2 transition-colors p-0 bg-transparent shadow-none border-none hidden md:block"
-        >
-          &#8594;
-        </button>
       </div>
       {/* Dots */}
       <div className="flex gap-2 mt-4">

@@ -49,7 +49,7 @@ export default function Home() {
           </div>
         </section>
         {/* Carousel Section: Personal Recommendations */}
-        <section className="flex items-center justify-center px-[4vw] relative z-10 flex-wrap bg-paletteWhite min-h-[26vh] md:min-h-[30vh]">
+        <section className="flex items-center justify-center px-[4vw] py-[4vh] md:py-[0] relative z-10 flex-wrap bg-paletteWhite min-h-[26vh] md:min-h-[30vh]">
           <PersonalRecommendationsCarousel />
         </section>
         {/* Strengths Section */}
