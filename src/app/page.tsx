@@ -3,7 +3,56 @@ import Link from "next/link";
 import PersonalRecommendationsCarousel from "@/components/PersonalRecommendationsCarousel";
 import ImageGrid from "@/components/ImageGrid";
 
+interface GridItem {
+  src: string;
+  alt: string;
+  title: string;
+  description: string;
+  titleSize?: string;
+  overlayColor?: string;
+}
+
+interface Recommendation {
+  name: string;
+  text: string;
+}
+
 export default function Home() {
+  const strengthsItems: GridItem[] = [
+    {
+      src: "/obama.jpg",
+      alt: "Obama",
+      title: "Leadership",
+      description: "I lead teams with empathy, clarity, and a focus on growth.",
+    },
+    {
+      src: "/coding.jpg",
+      alt: "Coding",
+      title: "Hands-on",
+      description: "I enjoy getting stuck in and getting my hands dirty.",
+    },
+    {
+      src: "/architecture.jpg",
+      alt: "Architecture",
+      title: "System Design",
+      description:
+        "I architect robust systems that balance performance, reliability, and maintainability.",
+      titleSize: "text-4xl font-extrabold",
+      overlayColor: "group-hover:bg-[#fff]/30",
+    },
+  ];
+
+  const recommendations: Recommendation[] = [
+    {
+      name: "Alison Darcy, Founder of Woebot Health",
+      text: "I can say without hesitation that he was one of the most grounded, people-centered leaders I've ever worked with.",
+    },
+    {
+      name: "Casey Sackett, CTO at Quizlet",
+      text: "He has incredibly high work ethic, is always dependable, with a positive attitude and willingness to tackle difficult business problems to bring company value.",
+    },
+  ];
+
   return (
     <>
       <div className="text-white relative">
@@ -50,11 +99,11 @@ export default function Home() {
         </section>
         {/* Carousel Section: Personal Recommendations */}
         <section className="flex items-center justify-center px-[4vw] py-[4vh] md:py-[0] relative z-10 flex-wrap bg-paletteWhite min-h-[26vh] md:min-h-[30vh]">
-          <PersonalRecommendationsCarousel />
+          <PersonalRecommendationsCarousel recommendations={recommendations} />
         </section>
         {/* Strengths Section */}
         <section className="flex items-center justify-between relative z-10 flex-wrap bg-[#181818]">
-          <ImageGrid />
+          <ImageGrid items={strengthsItems} />
         </section>
       </div>
     </>

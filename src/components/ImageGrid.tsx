@@ -12,36 +12,16 @@ interface GridItem {
   overlayColor?: string;
 }
 
-export default function ImageGrid() {
-  const [activeCard, setActiveCard] = useState<number | null>(null);
+interface ImageGridProps {
+  items: GridItem[];
+}
 
-  const strengthsItems: GridItem[] = [
-    {
-      src: "/obama.jpg",
-      alt: "Obama",
-      title: "Leadership",
-      description: "I lead teams with empathy, clarity, and a focus on growth.",
-    },
-    {
-      src: "/coding.jpg",
-      alt: "Coding",
-      title: "Hands-on Approach",
-      description: "I enjoy getting stuck in and getting my hands dirty.",
-    },
-    {
-      src: "/architecture.jpg",
-      alt: "Architecture",
-      title: "System Design",
-      description:
-        "I architect robust systems that balance performance, reliability, and maintainability.",
-      titleSize: "text-4xl font-extrabold",
-      overlayColor: "group-hover:bg-[#fff]/30",
-    },
-  ];
+export default function ImageGrid({ items }: ImageGridProps) {
+  const [activeCard, setActiveCard] = useState<number | null>(null);
 
   return (
     <div className="w-full flex flex-row flex-wrap justify-between">
-      {strengthsItems.map((item, index) => (
+      {items.map((item, index) => (
         <div
           key={index}
           className="relative w-full md:w-1/2 lg:w-1/3 aspect-square overflow-hidden rounded-none group shadow-lg"

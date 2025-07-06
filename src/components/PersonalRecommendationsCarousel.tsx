@@ -2,17 +2,18 @@
 
 import { useState, useRef } from "react";
 
-export default function PersonalRecommendationsCarousel() {
-  const recommendations = [
-    {
-      name: "Alison Darcy, Founder of Woebot Health",
-      text: "I can say without hesitation that he was one of the most grounded, people-centered leaders I've ever worked with.",
-    },
-    {
-      name: "Casey Sackett, CTO at Quizlet",
-      text: "He has incredibly high work ethic, is always dependable, with a positive attitude and willingness to tackle difficult business problems to bring company value.",
-    },
-  ];
+interface Recommendation {
+  name: string;
+  text: string;
+}
+
+interface PersonalRecommendationsCarouselProps {
+  recommendations: Recommendation[];
+}
+
+export default function PersonalRecommendationsCarousel({
+  recommendations,
+}: PersonalRecommendationsCarouselProps) {
   const [current, setCurrent] = useState(0);
   const total = recommendations.length;
   const touchStartX = useRef<number | null>(null);

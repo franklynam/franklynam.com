@@ -52,31 +52,17 @@ export default function Footer() {
           <div className="text-paletteRed text-xs mb-2 uppercase tracking-widest">
             Substack
           </div>
-          <div className="mb-2">Sign up below</div>
-          <form className="flex flex-col">
-            <label
-              htmlFor="footer-email"
-              className="text-paletteRed text-2xl mb-1"
+          <div className="mb-2">
+            Subscribe{" "}
+            <Link
+              href="https://franklynam.substack.com"
+              className="hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Email
-            </label>
-            <div className="flex items-center border-b border-paletteRed">
-              <input
-                id="footer-email"
-                type="email"
-                placeholder=""
-                className="bg-transparent outline-none flex-1 py-1 px-0 text-lg text-paletteRed placeholder-paletteRed"
-              />
-              <button
-                type="submit"
-                className="text-paletteRed text-2xl ml-2 pb-1 hover:text-paletteBlack transition-colors"
-              >
-                →
-              </button>
-            </div>
-          </form>
-          <div className="text-xs text-paletteBlack mt-2 opacity-70">
-            By subscribing, you agree to receive updates from Frank Lynam.
+              here
+            </Link>
+            .
           </div>
         </div>
       </div>
