@@ -17,7 +17,7 @@ export default function StrengthsPage() {
       id: "leadership",
       title: "Leadership",
       description: "I lead teams with empathy, clarity, and a focus on growth.",
-      image: "/treasure-map.jpg",
+      image: "/compass.jpg",
       alt: "Map",
       details: [
         "Building and mentoring high-performing engineering teams",
@@ -147,7 +147,7 @@ export default function StrengthsPage() {
                 <div
                   className={`relative ${index % 2 === 1 ? "md:order-1" : ""}`}
                 >
-                  <div className="aspect-[4/3] relative overflow-hidden rounded-lg">
+                  <div className="aspect-[4/3] relative overflow-hidden">
                     <Image
                       src={strength.image}
                       alt={strength.alt}
@@ -169,11 +169,11 @@ export default function StrengthsPage() {
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Are you ready to work together?
             </h2>
-            <p className="text-lg text-gray-300 mb-8">
+            <p className="text-lg text-gray-300 mb-8 max-w-none">
               Let&apos;s discuss how these strengths can benefit your next
               project.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-row gap-4 justify-center">
               <Link
                 href="/contact"
                 className="main-button bg-paletteRed text-white text-sm md:text-base"

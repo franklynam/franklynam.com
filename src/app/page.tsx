@@ -23,7 +23,7 @@ const INTRO_VIDEO_DISPLAY: boolean = false;
 export default function Home() {
   const strengthsItems: GridItem[] = [
     {
-      src: "/treasure-map.jpg",
+      src: "/compass.jpg",
       alt: "Map",
       title: "Leadership",
       description: "I lead teams with empathy, clarity, and a focus on growth.",

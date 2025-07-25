@@ -9,8 +9,8 @@ export default function Footer() {
     <footer className="bg-paletteBlack text-paletteWhite font-mono pt-8 pb-4 px-4 md:px-16 mt-auto">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end w-full">
         {/* Left: Huge FRANK */}
-        <div className="text-[12vw] md:text-[8vw] leading-none font-bold text-paletteRed tracking-tight select-none">
-          FRANK
+        <div className="text-[8vw] md:text-[5vw] leading-none font-bold text-paletteRed tracking-tight select-none">
+          FRANKLYNAM.COM
         </div>
         {/* Right: Let's Talk */}
         {BLOG_DISPLAY && (
@@ -82,6 +82,11 @@ export default function Footer() {
       <div className="flex flex-col md:flex-row justify-between items-center mt-8 text-xs gap-2 text-paletteWhite opacity-80">
         <div>
           Made by Frank Lynam using Next.js and Tailwind. Hosted on AWS Amplify.
+          Image credits{" "}
+          <Link href="/legal" className="hover:underline">
+            here
+          </Link>
+          .
         </div>
         <div>&copy; 2025 Frank Lynam</div>
       </div>
