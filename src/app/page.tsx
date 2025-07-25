@@ -20,14 +20,14 @@ interface Recommendation {
 export default function Home() {
   const strengthsItems: GridItem[] = [
     {
-      src: "/obama.jpg",
-      alt: "Obama",
+      src: "/treasure-map.jpg",
+      alt: "Map",
       title: "Leadership",
       description: "I lead teams with empathy, clarity, and a focus on growth.",
     },
     {
-      src: "/coding.jpg",
-      alt: "Coding",
+      src: "/code-screen.jpg",
+      alt: "Code",
       title: "Hands-on",
       description: "I enjoy getting stuck in and getting my hands dirty.",
     },
