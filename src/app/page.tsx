@@ -17,6 +17,8 @@ interface Recommendation {
   text: string;
 }
 
+const INTRO_VIDEO_DISPLAY: boolean = false;
+
 export default function Home() {
   const strengthsItems: GridItem[] = [
     {
@@ -79,12 +81,14 @@ export default function Home() {
               >
                 Download Resume
               </Link>
-              <Link
-                href="#"
-                className="main-button bg-paletteGold text-white text-sm md:text-base"
-              >
-                Intro
-              </Link>
+              {INTRO_VIDEO_DISPLAY && (
+                <Link
+                  href="#"
+                  className="main-button bg-paletteGold text-white text-sm md:text-base"
+                >
+                  Intro
+                </Link>
+              )}
             </div>
           </div>
           {/* Right: Headshot */}

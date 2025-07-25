@@ -55,7 +55,7 @@ export default function PersonalRecommendationsCarousel({
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        <p className="text-sm md:text-lg text-paletteBlack text-center mb-4 italic">
+        <p className="text-sm md:text-lg text-paletteBlack text-center mb-4">
           &ldquo;{recommendations[current].text}&rdquo;
         </p>
         <span className="font-semibold text-paletteBlack text-sm md:text-base text-center">
