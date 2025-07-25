@@ -36,8 +36,8 @@ export default function Header() {
             <Link href="/contact">contact</Link>
           </li>
           <li>
-            <Link href="https://franklynam.substack.com" target="_blank">
-              substack
+            <Link href="https://medium.com/@flynam" target="_blank">
+              blog
             </Link>
           </li>
         </ul>
@@ -81,8 +81,8 @@ export default function Header() {
             <Link href="/contact" onClick={() => setMenuOpen(false)}>
               contact
             </Link>
-            <Link href="https://franklynam.substack.com" target="_blank">
-              substack
+            <Link href="https://medium.com/@flynam" target="_blank">
+              blog
             </Link>
           </div>
         </nav>
