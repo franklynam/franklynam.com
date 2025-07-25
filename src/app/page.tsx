@@ -41,8 +41,7 @@ export default function Home() {
       alt: "Architecture",
       title: "System Design",
       description:
-        "I architect robust systems that balance performance, reliability, and maintainability.",
-      titleSize: "text-4xl font-extrabold",
+        "I architect systems that balance performance and reliability.",
       overlayColor: "group-hover:bg-[#fff]/30",
       href: "/strengths#system-design",
     },

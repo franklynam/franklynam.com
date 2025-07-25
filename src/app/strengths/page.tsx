@@ -56,7 +56,7 @@ export default function StrengthsPage() {
       id: "system-design",
       title: "System Design",
       description:
-        "I architect robust systems that balance performance, reliability, and maintainability.",
+        "I architect systems that balance performance and reliability.",
       image: "/architecture.jpg",
       alt: "Architecture",
       details: [
