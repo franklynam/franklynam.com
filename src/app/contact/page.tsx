@@ -3,7 +3,7 @@ import ContactForm from "@/components/ContactForm";
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-[#181818] text-white">
-      <div className="container mx-auto px-[4vw] py-[10vh]">
+      <div className="container mx-auto px-[4vw] sm:py-[10vh] py-[12vh]">
         <div className="max-w-2xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold mb-8">
             Get in <span className="text-paletteRed">Touch</span>
