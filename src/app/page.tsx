@@ -10,6 +10,7 @@ interface GridItem {
   description: string;
   titleSize?: string;
   overlayColor?: string;
+  href?: string;
 }
 
 interface Recommendation {
@@ -26,12 +27,14 @@ export default function Home() {
       alt: "Map",
       title: "Leadership",
       description: "I lead teams with empathy, clarity, and a focus on growth.",
+      href: "/strengths#leadership",
     },
     {
       src: "/code-screen.jpg",
       alt: "Code",
       title: "Hands-on",
-      description: "I enjoy getting stuck in and getting my hands dirty.",
+      description: "I enjoy getting stuck in and writing code.",
+      href: "/strengths#hands-on",
     },
     {
       src: "/architecture.jpg",
@@ -41,6 +44,7 @@ export default function Home() {
         "I architect robust systems that balance performance, reliability, and maintainability.",
       titleSize: "text-4xl font-extrabold",
       overlayColor: "group-hover:bg-[#fff]/30",
+      href: "/strengths#system-design",
     },
   ];
 
@@ -62,11 +66,12 @@ export default function Home() {
         <section className="flex items-center justify-between px-[4vw] min-h-[40vh] relative z-10 flex-wrap">
           {/* Left: Text */}
           <div className="max-w-xl z-20 mt-50 ">
-            <h1 className="text-paletteWhite text-3xl md:text-4xl font-medium mb-4">
+            <h1 className="text-paletteWhite text-2xl md:text-4xl font-medium mb-4">
               Hi. I&apos;m{" "}
-              <span className="text-paletteRed uppercase font-bold">Frank</span>
+              <span className="text-paletteRed font-bold">Frank</span>
+              .
               <br />
-              Engineering Leader
+              Your engineering leader
             </h1>
             <p className="text-paletteWhite brightness-[90%] text-base">
               Software engineering for me is a craft, one honed through years of

@@ -33,6 +33,9 @@ export default function Header() {
             <Link href="/">home</Link>
           </li>
           <li>
+            <Link href="/strengths">strengths</Link>
+          </li>
+          <li>
             <Link href="/contact">contact</Link>
           </li>
           <li>
@@ -77,6 +80,9 @@ export default function Header() {
           <div className="flex flex-col items-center justify-center h-full space-y-6">
             <Link href="/" onClick={() => setMenuOpen(false)}>
               home
+            </Link>
+            <Link href="/strengths" onClick={() => setMenuOpen(false)}>
+              strengths
             </Link>
             <Link href="/contact" onClick={() => setMenuOpen(false)}>
               contact
