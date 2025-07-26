@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 declare global {
   interface Window {
@@ -13,20 +13,15 @@ declare global {
 
 export const useGoogleAnalytics = () => {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
 
   // Track page views
   useEffect(() => {
     if (pathname) {
-      const url = searchParams?.size
-        ? `${pathname}?${searchParams.toString()}`
-        : pathname;
-
       window.gtag("config", "G-KXG1K4CEVE", {
-        page_path: url,
+        page_path: pathname,
       });
     }
-  }, [pathname, searchParams]);
+  }, [pathname]);
 
   // Custom event tracking
   const trackEvent = (
