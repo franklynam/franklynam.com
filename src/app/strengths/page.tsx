@@ -28,7 +28,7 @@ export default function StrengthsPage() {
       ],
       examples: [
         "Spearheaded a major engineering growth spurt that saw headcount increase by 300% in 2 years",
-        "Reduced team turnover from 25% to 8% through improved leadership practices",
+        "Reduced team turnover from 25% to 8% through improved leadership practises",
         "Chaired a company board during a management buyout",
       ],
     },
@@ -43,7 +43,7 @@ export default function StrengthsPage() {
         "Debugging complex technical issues",
         "Code reviews and pair programming",
         "Architecture design and implementation",
-        "Staying current with latest technologies and best practices",
+        "Staying current with latest technologies and best practises",
       ],
       examples: [
         "Regularly contribute to critical path features and bug fixes",
@@ -64,7 +64,7 @@ export default function StrengthsPage() {
         "Performance optimization and capacity planning",
         "Security by design",
         "Cloud-native design",
-        "Database design and data modeling",
+        "Database design and data modelling",
         "API design and integration patterns",
       ],
       examples: [

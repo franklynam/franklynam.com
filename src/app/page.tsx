@@ -74,7 +74,7 @@ export default function Home() {
             </h1>
             <p className="text-paletteWhite brightness-[90%] text-base">
               Software engineering for me is a craft, one honed through years of
-              practice in the pursuit of excellence.
+              practise in the pursuit of excellence.
             </p>
             <div className="flex gap-4 items-center mb-10">
               <Link

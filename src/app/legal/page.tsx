@@ -78,7 +78,7 @@ export default function LegalPage() {
 
           <div className="mt-12 pt-8">
             <p className="text-gray-400 text-sm mb-6 max-w-none">
-              All images are used in accordance with their respective licenses.
+              All images are used in accordance with their respective licences.
               If you believe any attribution is incorrect or missing, please
               contact us.
             </p>
