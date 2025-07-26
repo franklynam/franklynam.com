@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import PersonalRecommendationsCarousel from "@/components/PersonalRecommendationsCarousel";
 import ImageGrid from "@/components/ImageGrid";
+import ResumeDownloadButton from "@/components/ResumeDownloadButton";
 
 interface GridItem {
   src: string;
@@ -77,14 +78,7 @@ export default function Home() {
               practise in the pursuit of excellence.
             </p>
             <div className="flex gap-4 items-center mb-10">
-              <Link
-                href="/franklynam-resume-may2025-v1.pdf"
-                className="main-button bg-paletteRed text-white text-sm md:text-base"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Download Resume
-              </Link>
+              <ResumeDownloadButton />
               {INTRO_VIDEO_DISPLAY && (
                 <Link
                   href="#"

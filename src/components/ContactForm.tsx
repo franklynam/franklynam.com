@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useGoogleAnalytics } from "@/hooks/useGoogleAnalytics";
 
 interface FormData {
   name: string;
@@ -15,6 +16,7 @@ interface FormErrors {
 }
 
 export default function ContactForm() {
+  const { trackFormSubmission } = useGoogleAnalytics();
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -100,6 +102,7 @@ export default function ContactForm() {
       });
 
       if (response.ok) {
+        trackFormSubmission("contact_form");
         setSubmitStatus("success");
         setFormData({ name: "", email: "", message: "" });
         setErrors({}); // Clear any existing errors
