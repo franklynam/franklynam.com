@@ -28,7 +28,6 @@ export default function StrengthsPage() {
       ],
       examples: [
         "Spearheaded a major engineering growth spurt that saw headcount increase by 300% in 2 years",
-        "Reduced team turnover from 25% to 8% through improved leadership practises",
         "Chaired a company board during a management buyout",
       ],
     },
