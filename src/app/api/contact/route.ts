@@ -8,7 +8,6 @@ interface ContactFormData {
 }
 
 export async function POST(request: NextRequest) {
-  console.log("POST - SMTP_DISPLAY_NAME:", process.env.SMTP_DISPLAY_NAME);
   try {
     const body: ContactFormData = await request.json();
     const { name, email, message } = body;

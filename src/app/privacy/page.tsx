@@ -26,9 +26,10 @@ export default function PrivacyPage() {
               Introduction
             </h2>
             <p className="text-gray-300 leading-relaxed">
-              This Privacy Policy describes how franklynam.com ("we", "us", or
-              "our") collects, uses, and protects your information when you
-              visit our website.
+              This Privacy Policy describes how franklynam.com
+              (&ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;)
+              collects, uses, and protects your information when you visit our
+              website.
             </p>
           </section>
 
@@ -146,7 +147,7 @@ export default function PrivacyPage() {
             <p className="text-gray-300 leading-relaxed">
               We may update this Privacy Policy from time to time. We will
               notify you of any changes by posting the new Privacy Policy on
-              this page and updating the "Last updated" date.
+              this page and updating the &ldquo;Last updated&rdquo; date.
             </p>
           </section>
 
