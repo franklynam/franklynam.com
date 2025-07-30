@@ -3,6 +3,7 @@ import Link from "next/link";
 const BLOG_DISPLAY: boolean = false;
 const SOCIAL_INSTAGRAM: boolean = false;
 const SOCIAL_LINKEDIN: boolean = true;
+const SOCIAL_MEDIUM: boolean = true;
 
 export default function Footer() {
   return (
@@ -29,7 +30,7 @@ export default function Footer() {
             Contact
           </div>
           <div>Frank Lynam</div>
-          <div>frank@franklynam.com</div>
+          <div>Dublin, Ireland</div>
         </div>
         {/* Socials */}
         <div>
@@ -54,6 +55,16 @@ export default function Footer() {
               rel="noopener noreferrer"
             >
               LinkedIn
+            </Link>
+          )}
+          {SOCIAL_MEDIUM && (
+            <Link
+              href="https://medium.com/@flynam"
+              className="block hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Medium
             </Link>
           )}
         </div>
