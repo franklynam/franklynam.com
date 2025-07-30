@@ -107,6 +107,29 @@ export default function Home() {
         <section className="flex items-center justify-between relative z-10 flex-wrap bg-[#181818]">
           <ImageGrid items={strengthsItems} />
         </section>
+
+        {/* CTA Section */}
+        <section className="bg-gray-900 py-16">
+          <div className="container mx-auto px-[4vw] text-center">
+            <div className="max-w-2xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Would you like to hear more?
+              </h2>
+              <p className="text-lg text-gray-300 mb-8 max-w-none">
+                Let&apos;s discuss how I can help bring your next project to
+                life.
+              </p>
+              <div className="flex flex-row gap-4 justify-center">
+                <Link
+                  href="/contact"
+                  className="main-button bg-paletteRed text-white text-sm md:text-base"
+                >
+                  Get in Touch
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </>
   );
