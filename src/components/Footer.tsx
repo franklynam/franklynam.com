@@ -85,6 +85,10 @@ export default function Footer() {
           Image credits{" "}
           <Link href="/legal" className="hover:underline">
             here
+          </Link>{" "}
+          and privacy policy{" "}
+          <Link href="/privacy" className="hover:underline">
+            here
           </Link>
           .
         </div>

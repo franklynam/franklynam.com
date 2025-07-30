@@ -14,9 +14,15 @@ declare global {
 export const useGoogleAnalytics = () => {
   const pathname = usePathname();
 
+  // Check if user has consented to cookies
+  const hasConsented = () => {
+    if (typeof window === "undefined") return false;
+    return localStorage.getItem("cookieConsent") === "accepted";
+  };
+
   // Track page views
   useEffect(() => {
-    if (pathname) {
+    if (pathname && hasConsented() && typeof window.gtag === "function") {
       window.gtag("config", "G-KXG1K4CEVE", {
         page_path: pathname,
       });
@@ -30,11 +36,13 @@ export const useGoogleAnalytics = () => {
     label?: string,
     value?: number
   ) => {
-    window.gtag("event", action, {
-      event_category: category,
-      event_label: label,
-      value: value,
-    });
+    if (hasConsented() && typeof window.gtag === "function") {
+      window.gtag("event", action, {
+        event_category: category,
+        event_label: label,
+        value: value,
+      });
+    }
   };
 
   // Track button clicks
