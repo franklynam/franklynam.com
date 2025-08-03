@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import Link from "next/link";
 import AnalyticsWrapper from "../AnalyticsWrapper";
 
 // Mock the useGoogleAnalytics hook
@@ -36,9 +37,8 @@ describe("AnalyticsWrapper", () => {
     expect(screen.getByText("Child 2")).toBeInTheDocument();
     expect(screen.getByText("Child 3")).toBeInTheDocument();
   });
-
   it("should render empty children", () => {
-    const { container } = render(<AnalyticsWrapper>{}</AnalyticsWrapper>);
+    const { container } = render(<AnalyticsWrapper>{null}</AnalyticsWrapper>);
 
     expect(container.firstChild).toBeNull();
   });
@@ -63,8 +63,8 @@ describe("AnalyticsWrapper", () => {
         <header>
           <h1>Title</h1>
           <nav>
-            <a href="/">Home</a>
-            <a href="/about">About</a>
+            <Link href="/">Home</Link>
+            <Link href="/about">About</Link>
           </nav>
         </header>
         <main>

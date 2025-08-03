@@ -1,29 +1,16 @@
 import { act, render, screen, waitFor } from "@testing-library/react";
 import ConditionalAnalytics from "../ConditionalAnalytics";
 
-// Type declarations for mocked localStorage
-declare global {
-  interface Window {
-    localStorage: {
-      getItem: jest.MockedFunction<(key: string) => string | null>;
-      setItem: jest.MockedFunction<(key: string, value: string) => void>;
-      removeItem: jest.MockedFunction<(key: string) => void>;
-      clear: jest.MockedFunction<() => void>;
-    };
-    addEventListener: jest.MockedFunction<
-      (type: string, listener: EventListener) => void
-    >;
-    removeEventListener: jest.MockedFunction<
-      (type: string, listener: EventListener) => void
-    >;
-    dispatchEvent: jest.MockedFunction<(event: Event) => boolean>;
-  }
-}
-
 // Mock Next.js Script component
 jest.mock("next/script", () => ({
   __esModule: true,
-  default: ({ children, ...props }: any) => {
+  default: ({
+    children,
+    ...props
+  }: {
+    children?: React.ReactNode;
+    [key: string]: unknown;
+  }) => {
     return (
       <div data-testid="script" {...props}>
         {children}
@@ -35,13 +22,13 @@ jest.mock("next/script", () => ({
 describe("ConditionalAnalytics", () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    localStorage.clear();
-    window.dispatchEvent = jest.fn();
+    (localStorage.clear as jest.Mock).mockClear();
+    (window.dispatchEvent as jest.Mock).mockClear();
   });
 
   describe("initial render", () => {
     it("should not render scripts when no consent is given", () => {
-      localStorage.getItem.mockReturnValue(null);
+      (localStorage.getItem as jest.Mock).mockReturnValue(null);
 
       const { container } = render(<ConditionalAnalytics />);
 
@@ -49,7 +36,7 @@ describe("ConditionalAnalytics", () => {
     });
 
     it("should not render scripts when consent is declined", () => {
-      localStorage.getItem.mockReturnValue("declined");
+      (localStorage.getItem as jest.Mock).mockReturnValue("declined");
 
       const { container } = render(<ConditionalAnalytics />);
 
@@ -57,7 +44,7 @@ describe("ConditionalAnalytics", () => {
     });
 
     it("should render scripts when consent is accepted", () => {
-      localStorage.getItem.mockReturnValue("accepted");
+      (localStorage.getItem as jest.Mock).mockReturnValue("accepted");
 
       render(<ConditionalAnalytics />);
 
@@ -68,7 +55,7 @@ describe("ConditionalAnalytics", () => {
 
   describe("consent change handling", () => {
     it("should load scripts when consent changes to accepted", async () => {
-      localStorage.getItem.mockReturnValue(null);
+      (localStorage.getItem as jest.Mock).mockReturnValue(null);
 
       const { rerender } = render(<ConditionalAnalytics />);
 
@@ -76,7 +63,7 @@ describe("ConditionalAnalytics", () => {
       expect(screen.queryByTestId("script")).not.toBeInTheDocument();
 
       // Simulate consent change
-      localStorage.getItem.mockReturnValue("accepted");
+      (localStorage.getItem as jest.Mock).mockReturnValue("accepted");
 
       // Trigger storage event by calling the actual event listeners
       const storageEvent = new StorageEvent("storage", {
@@ -107,7 +94,7 @@ describe("ConditionalAnalytics", () => {
     });
 
     it("should handle custom consent changed event", async () => {
-      localStorage.getItem.mockReturnValue(null);
+      (localStorage.getItem as jest.Mock).mockReturnValue(null);
 
       const { rerender } = render(<ConditionalAnalytics />);
 
@@ -115,7 +102,7 @@ describe("ConditionalAnalytics", () => {
       expect(screen.queryByTestId("script")).not.toBeInTheDocument();
 
       // Simulate consent change
-      localStorage.getItem.mockReturnValue("accepted");
+      (localStorage.getItem as jest.Mock).mockReturnValue("accepted");
 
       // Trigger custom event by calling the actual event listeners
       const consentEvent = new Event("consentChanged");
@@ -145,7 +132,7 @@ describe("ConditionalAnalytics", () => {
 
   describe("script loading", () => {
     it("should load Google Analytics script with correct props", () => {
-      localStorage.getItem.mockReturnValue("accepted");
+      (localStorage.getItem as jest.Mock).mockReturnValue("accepted");
 
       render(<ConditionalAnalytics />);
 
@@ -161,7 +148,7 @@ describe("ConditionalAnalytics", () => {
     });
 
     it("should load configuration script", () => {
-      localStorage.getItem.mockReturnValue("accepted");
+      (localStorage.getItem as jest.Mock).mockReturnValue("accepted");
 
       render(<ConditionalAnalytics />);
 
@@ -178,7 +165,7 @@ describe("ConditionalAnalytics", () => {
 
   describe("event listeners", () => {
     it("should add storage event listener on mount", () => {
-      localStorage.getItem.mockReturnValue(null);
+      (localStorage.getItem as jest.Mock).mockReturnValue(null);
 
       render(<ConditionalAnalytics />);
 
@@ -190,7 +177,7 @@ describe("ConditionalAnalytics", () => {
     });
 
     it("should add consent changed event listener on mount", () => {
-      localStorage.getItem.mockReturnValue(null);
+      (localStorage.getItem as jest.Mock).mockReturnValue(null);
 
       render(<ConditionalAnalytics />);
 
@@ -201,7 +188,7 @@ describe("ConditionalAnalytics", () => {
     });
 
     it("should remove event listeners on unmount", () => {
-      localStorage.getItem.mockReturnValue(null);
+      (localStorage.getItem as jest.Mock).mockReturnValue(null);
 
       const { unmount } = render(<ConditionalAnalytics />);
 
@@ -220,7 +207,7 @@ describe("ConditionalAnalytics", () => {
 
   describe("edge cases", () => {
     it("should handle localStorage errors gracefully", () => {
-      localStorage.getItem.mockImplementation(() => {
+      (localStorage.getItem as jest.Mock).mockImplementation(() => {
         throw new Error("localStorage error");
       });
 
@@ -231,12 +218,12 @@ describe("ConditionalAnalytics", () => {
     });
 
     it("should handle multiple consent changes", async () => {
-      localStorage.getItem.mockReturnValue(null);
+      (localStorage.getItem as jest.Mock).mockReturnValue(null);
 
       const { rerender } = render(<ConditionalAnalytics />);
 
       // Change to accepted
-      localStorage.getItem.mockReturnValue("accepted");
+      (localStorage.getItem as jest.Mock).mockReturnValue("accepted");
 
       // Trigger custom event by calling the actual event listeners
       const consentEvent = new Event("consentChanged");
@@ -260,7 +247,7 @@ describe("ConditionalAnalytics", () => {
       });
 
       // Change back to declined
-      localStorage.getItem.mockReturnValue("declined");
+      (localStorage.getItem as jest.Mock).mockReturnValue("declined");
 
       if (consentListener) {
         act(() => {
@@ -277,9 +264,9 @@ describe("ConditionalAnalytics", () => {
 
     it("should handle window object not being available", () => {
       const originalWindow = global.window;
-      global.window = undefined as any;
+      global.window = undefined as unknown as typeof window;
 
-      localStorage.getItem.mockReturnValue("accepted");
+      (localStorage.getItem as jest.Mock).mockReturnValue("accepted");
 
       // Should not throw error
       expect(() => render(<ConditionalAnalytics />)).not.toThrow();
@@ -290,7 +277,7 @@ describe("ConditionalAnalytics", () => {
 
   describe("performance", () => {
     it("should not re-render unnecessarily", () => {
-      localStorage.getItem.mockReturnValue("accepted");
+      (localStorage.getItem as jest.Mock).mockReturnValue("accepted");
 
       const { rerender } = render(<ConditionalAnalytics />);
 

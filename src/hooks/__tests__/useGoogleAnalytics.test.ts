@@ -16,23 +16,23 @@ describe("useGoogleAnalytics", () => {
 
   describe("consent checking", () => {
     it("should not track when user has not consented", () => {
-      localStorage.getItem.mockReturnValue(null);
+      (localStorage.getItem as jest.Mock).mockReturnValue(null);
 
-      const { result } = renderHook(() => useGoogleAnalytics());
+      renderHook(() => useGoogleAnalytics());
 
       expect(window.gtag).not.toHaveBeenCalled();
     });
 
     it("should not track when user has declined consent", () => {
-      localStorage.getItem.mockReturnValue("declined");
+      (localStorage.getItem as jest.Mock).mockReturnValue("declined");
 
-      const { result } = renderHook(() => useGoogleAnalytics());
+      renderHook(() => useGoogleAnalytics());
 
       expect(window.gtag).not.toHaveBeenCalled();
     });
 
     it("should track when user has accepted consent", () => {
-      localStorage.getItem.mockReturnValue("accepted");
+      (localStorage.getItem as jest.Mock).mockReturnValue("accepted");
 
       renderHook(() => useGoogleAnalytics());
 
@@ -44,7 +44,7 @@ describe("useGoogleAnalytics", () => {
 
   describe("trackEvent", () => {
     it("should track events when consent is given", () => {
-      localStorage.getItem.mockReturnValue("accepted");
+      (localStorage.getItem as jest.Mock).mockReturnValue("accepted");
 
       const { result } = renderHook(() => useGoogleAnalytics());
 
@@ -65,7 +65,7 @@ describe("useGoogleAnalytics", () => {
     });
 
     it("should not track events when consent is not given", () => {
-      localStorage.getItem.mockReturnValue("declined");
+      (localStorage.getItem as jest.Mock).mockReturnValue("declined");
 
       const { result } = renderHook(() => useGoogleAnalytics());
 
@@ -79,7 +79,7 @@ describe("useGoogleAnalytics", () => {
 
   describe("trackButtonClick", () => {
     it("should track button clicks when consent is given", () => {
-      localStorage.getItem.mockReturnValue("accepted");
+      (localStorage.getItem as jest.Mock).mockReturnValue("accepted");
 
       const { result } = renderHook(() => useGoogleAnalytics());
 
@@ -97,7 +97,7 @@ describe("useGoogleAnalytics", () => {
 
   describe("trackFormSubmission", () => {
     it("should track form submissions when consent is given", () => {
-      localStorage.getItem.mockReturnValue("accepted");
+      (localStorage.getItem as jest.Mock).mockReturnValue("accepted");
 
       const { result } = renderHook(() => useGoogleAnalytics());
 
@@ -115,7 +115,7 @@ describe("useGoogleAnalytics", () => {
 
   describe("trackDownload", () => {
     it("should track downloads when consent is given", () => {
-      localStorage.getItem.mockReturnValue("accepted");
+      (localStorage.getItem as jest.Mock).mockReturnValue("accepted");
 
       const { result } = renderHook(() => useGoogleAnalytics());
 
@@ -133,8 +133,8 @@ describe("useGoogleAnalytics", () => {
 
   describe("gtag function availability", () => {
     it("should not call gtag if function is not available", () => {
-      localStorage.getItem.mockReturnValue("accepted");
-      window.gtag = undefined as any;
+      (localStorage.getItem as jest.Mock).mockReturnValue("accepted");
+      window.gtag = undefined as unknown as typeof window.gtag;
 
       const { result } = renderHook(() => useGoogleAnalytics());
 
@@ -151,9 +151,9 @@ describe("useGoogleAnalytics", () => {
     it("should handle server-side rendering gracefully", () => {
       // Simulate server-side environment
       const originalWindow = global.window;
-      global.window = undefined as any;
+      global.window = undefined as unknown as typeof window;
 
-      localStorage.getItem.mockReturnValue("accepted");
+      (localStorage.getItem as jest.Mock).mockReturnValue("accepted");
 
       const { result } = renderHook(() => useGoogleAnalytics());
 

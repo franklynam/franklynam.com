@@ -5,14 +5,14 @@ import CookieConsent from "../CookieConsent";
 describe("CookieConsent", () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    localStorage.clear();
+    (localStorage.clear as jest.Mock).mockClear();
     // Reset window.dispatchEvent mock
-    window.dispatchEvent = jest.fn();
+    (window.dispatchEvent as jest.Mock).mockClear();
   });
 
   describe("initial render", () => {
     it("should show consent popup when no consent is stored", () => {
-      localStorage.getItem.mockReturnValue(null);
+      (localStorage.getItem as jest.Mock).mockReturnValue(null);
 
       render(<CookieConsent />);
 
@@ -26,7 +26,7 @@ describe("CookieConsent", () => {
     });
 
     it("should not show popup when consent is already given", () => {
-      localStorage.getItem.mockReturnValue("accepted");
+      (localStorage.getItem as jest.Mock).mockReturnValue("accepted");
 
       const { container } = render(<CookieConsent />);
 
@@ -34,7 +34,7 @@ describe("CookieConsent", () => {
     });
 
     it("should not show popup when consent is declined", () => {
-      localStorage.getItem.mockReturnValue("declined");
+      (localStorage.getItem as jest.Mock).mockReturnValue("declined");
 
       const { container } = render(<CookieConsent />);
 
@@ -45,7 +45,7 @@ describe("CookieConsent", () => {
   describe("accept functionality", () => {
     it("should store accepted consent in localStorage", async () => {
       const user = userEvent.setup();
-      localStorage.getItem.mockReturnValue(null);
+      (localStorage.getItem as jest.Mock).mockReturnValue(null);
 
       render(<CookieConsent />);
 
@@ -60,7 +60,7 @@ describe("CookieConsent", () => {
 
     it("should hide popup after accepting", async () => {
       const user = userEvent.setup();
-      localStorage.getItem.mockReturnValue(null);
+      (localStorage.getItem as jest.Mock).mockReturnValue(null);
 
       const { container } = render(<CookieConsent />);
 
@@ -74,7 +74,7 @@ describe("CookieConsent", () => {
 
     it("should dispatch consent changed event when accepting", async () => {
       const user = userEvent.setup();
-      localStorage.getItem.mockReturnValue(null);
+      (localStorage.getItem as jest.Mock).mockReturnValue(null);
 
       render(<CookieConsent />);
 
@@ -90,7 +90,7 @@ describe("CookieConsent", () => {
   describe("decline functionality", () => {
     it("should store declined consent in localStorage", async () => {
       const user = userEvent.setup();
-      localStorage.getItem.mockReturnValue(null);
+      (localStorage.getItem as jest.Mock).mockReturnValue(null);
 
       render(<CookieConsent />);
 
@@ -105,7 +105,7 @@ describe("CookieConsent", () => {
 
     it("should hide popup after declining", async () => {
       const user = userEvent.setup();
-      localStorage.getItem.mockReturnValue(null);
+      (localStorage.getItem as jest.Mock).mockReturnValue(null);
 
       const { container } = render(<CookieConsent />);
 
@@ -119,7 +119,7 @@ describe("CookieConsent", () => {
 
     it("should dispatch consent changed event when declining", async () => {
       const user = userEvent.setup();
-      localStorage.getItem.mockReturnValue(null);
+      (localStorage.getItem as jest.Mock).mockReturnValue(null);
 
       render(<CookieConsent />);
 
@@ -134,7 +134,7 @@ describe("CookieConsent", () => {
 
   describe("UI elements", () => {
     it("should display correct consent message", () => {
-      localStorage.getItem.mockReturnValue(null);
+      (localStorage.getItem as jest.Mock).mockReturnValue(null);
 
       render(<CookieConsent />);
 
@@ -147,7 +147,7 @@ describe("CookieConsent", () => {
     });
 
     it("should have link to privacy policy", () => {
-      localStorage.getItem.mockReturnValue(null);
+      (localStorage.getItem as jest.Mock).mockReturnValue(null);
 
       render(<CookieConsent />);
 
@@ -156,7 +156,7 @@ describe("CookieConsent", () => {
     });
 
     it("should have correct styling classes", () => {
-      localStorage.getItem.mockReturnValue(null);
+      (localStorage.getItem as jest.Mock).mockReturnValue(null);
 
       render(<CookieConsent />);
 
@@ -167,18 +167,21 @@ describe("CookieConsent", () => {
     });
 
     it("should have responsive design", () => {
-      localStorage.getItem.mockReturnValue(null);
+      (localStorage.getItem as jest.Mock).mockReturnValue(null);
 
       render(<CookieConsent />);
 
       const container = screen.getByText(/we use cookies/i).closest("div");
+      /*expect(
+        container?.parentElement?.parentElement?.parentElement?.parentElement
+      ).toHaveClass("flex-col", "md:flex-row");*/
       expect(container?.parentElement).toHaveClass("flex-col", "md:flex-row");
     });
   });
 
   describe("button interactions", () => {
     it("should have accessible button labels", () => {
-      localStorage.getItem.mockReturnValue(null);
+      (localStorage.getItem as jest.Mock).mockReturnValue(null);
 
       render(<CookieConsent />);
 
@@ -191,7 +194,7 @@ describe("CookieConsent", () => {
     });
 
     it("should have correct button styling", () => {
-      localStorage.getItem.mockReturnValue(null);
+      (localStorage.getItem as jest.Mock).mockReturnValue(null);
 
       render(<CookieConsent />);
 
@@ -204,7 +207,7 @@ describe("CookieConsent", () => {
 
     it("should be keyboard accessible", async () => {
       const user = userEvent.setup();
-      localStorage.getItem.mockReturnValue(null);
+      (localStorage.getItem as jest.Mock).mockReturnValue(null);
 
       render(<CookieConsent />);
 
@@ -223,8 +226,8 @@ describe("CookieConsent", () => {
   describe("edge cases", () => {
     it("should handle localStorage errors gracefully", async () => {
       const user = userEvent.setup();
-      localStorage.getItem.mockReturnValue(null);
-      localStorage.setItem.mockImplementation(() => {
+      (localStorage.getItem as jest.Mock).mockReturnValue(null);
+      (localStorage.setItem as jest.Mock).mockImplementation(() => {
         throw new Error("localStorage error");
       });
 
@@ -241,7 +244,7 @@ describe("CookieConsent", () => {
 
     it("should handle multiple rapid clicks", async () => {
       const user = userEvent.setup();
-      localStorage.getItem.mockReturnValue(null);
+      (localStorage.getItem as jest.Mock).mockReturnValue(null);
 
       render(<CookieConsent />);
 
