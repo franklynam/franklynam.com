@@ -4,6 +4,7 @@ const BLOG_DISPLAY: boolean = false;
 const SOCIAL_INSTAGRAM: boolean = false;
 const SOCIAL_LINKEDIN: boolean = true;
 const SOCIAL_MEDIUM: boolean = true;
+const VERSION: string = process.env.APP_VERSION || "1.0.0";
 
 export default function Footer() {
   return (
@@ -103,7 +104,7 @@ export default function Footer() {
           </Link>
           .
         </div>
-        <div>&copy; 2025 Frank Lynam</div>
+        <div>v{VERSION} &copy; 2025 Frank Lynam</div>
       </div>
     </footer>
   );
