@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import { useGoogleAnalytics } from "@/hooks/useGoogleAnalytics";
+import { useState } from "react";
 
 interface FormData {
   name: string;

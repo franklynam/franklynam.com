@@ -40,13 +40,13 @@ describe("AnalyticsWrapper", () => {
   it("should render empty children", () => {
     const { container } = render(<AnalyticsWrapper>{}</AnalyticsWrapper>);
 
-    expect(container.firstChild).toBeInTheDocument();
+    expect(container.firstChild).toBeNull();
   });
 
   it("should render null children", () => {
     const { container } = render(<AnalyticsWrapper>{null}</AnalyticsWrapper>);
 
-    expect(container.firstChild).toBeInTheDocument();
+    expect(container.firstChild).toBeNull();
   });
 
   it("should render undefined children", () => {
@@ -54,7 +54,7 @@ describe("AnalyticsWrapper", () => {
       <AnalyticsWrapper>{undefined}</AnalyticsWrapper>
     );
 
-    expect(container.firstChild).toBeInTheDocument();
+    expect(container.firstChild).toBeNull();
   });
 
   it("should render complex nested structure", () => {

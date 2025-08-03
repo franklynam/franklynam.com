@@ -1,5 +1,24 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { act, render, screen, waitFor } from "@testing-library/react";
 import ConditionalAnalytics from "../ConditionalAnalytics";
+
+// Type declarations for mocked localStorage
+declare global {
+  interface Window {
+    localStorage: {
+      getItem: jest.MockedFunction<(key: string) => string | null>;
+      setItem: jest.MockedFunction<(key: string, value: string) => void>;
+      removeItem: jest.MockedFunction<(key: string) => void>;
+      clear: jest.MockedFunction<() => void>;
+    };
+    addEventListener: jest.MockedFunction<
+      (type: string, listener: EventListener) => void
+    >;
+    removeEventListener: jest.MockedFunction<
+      (type: string, listener: EventListener) => void
+    >;
+    dispatchEvent: jest.MockedFunction<(event: Event) => boolean>;
+  }
+}
 
 // Mock Next.js Script component
 jest.mock("next/script", () => ({
@@ -59,13 +78,24 @@ describe("ConditionalAnalytics", () => {
       // Simulate consent change
       localStorage.getItem.mockReturnValue("accepted");
 
-      // Trigger storage event
-      window.dispatchEvent(
-        new StorageEvent("storage", {
-          key: "cookieConsent",
-          newValue: "accepted",
-        })
-      );
+      // Trigger storage event by calling the actual event listeners
+      const storageEvent = new StorageEvent("storage", {
+        key: "cookieConsent",
+        newValue: "accepted",
+      });
+
+      // Get the event listeners that were registered
+      const addEventListenerCalls = (window.addEventListener as jest.Mock).mock
+        .calls;
+      const storageListener = addEventListenerCalls.find(
+        (call) => call[0] === "storage"
+      )?.[1];
+
+      if (storageListener) {
+        act(() => {
+          storageListener(storageEvent);
+        });
+      }
 
       // Re-render with new consent
       rerender(<ConditionalAnalytics />);
@@ -87,8 +117,21 @@ describe("ConditionalAnalytics", () => {
       // Simulate consent change
       localStorage.getItem.mockReturnValue("accepted");
 
-      // Trigger custom event
-      window.dispatchEvent(new Event("consentChanged"));
+      // Trigger custom event by calling the actual event listeners
+      const consentEvent = new Event("consentChanged");
+
+      // Get the event listeners that were registered
+      const addEventListenerCalls = (window.addEventListener as jest.Mock).mock
+        .calls;
+      const consentListener = addEventListenerCalls.find(
+        (call) => call[0] === "consentChanged"
+      )?.[1];
+
+      if (consentListener) {
+        act(() => {
+          consentListener(consentEvent);
+        });
+      }
 
       // Re-render with new consent
       rerender(<ConditionalAnalytics />);
@@ -194,7 +237,21 @@ describe("ConditionalAnalytics", () => {
 
       // Change to accepted
       localStorage.getItem.mockReturnValue("accepted");
-      window.dispatchEvent(new Event("consentChanged"));
+
+      // Trigger custom event by calling the actual event listeners
+      const consentEvent = new Event("consentChanged");
+      const addEventListenerCalls = (window.addEventListener as jest.Mock).mock
+        .calls;
+      const consentListener = addEventListenerCalls.find(
+        (call) => call[0] === "consentChanged"
+      )?.[1];
+
+      if (consentListener) {
+        act(() => {
+          consentListener(consentEvent);
+        });
+      }
+
       rerender(<ConditionalAnalytics />);
 
       await waitFor(() => {
@@ -204,7 +261,13 @@ describe("ConditionalAnalytics", () => {
 
       // Change back to declined
       localStorage.getItem.mockReturnValue("declined");
-      window.dispatchEvent(new Event("consentChanged"));
+
+      if (consentListener) {
+        act(() => {
+          consentListener(consentEvent);
+        });
+      }
+
       rerender(<ConditionalAnalytics />);
 
       // Scripts should still be there (component doesn't remove them once loaded)

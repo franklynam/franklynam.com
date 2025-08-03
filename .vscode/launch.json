@@ -27,7 +27,7 @@
         "--runInBand",
         "--no-cache",
         "--watchAll=false",
-        "src/app/api/__tests__/contact.test.ts"
+        "src/components/__tests__/ContactForm.test.tsx"
       ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",

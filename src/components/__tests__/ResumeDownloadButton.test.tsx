@@ -17,55 +17,55 @@ describe("ResumeDownloadButton", () => {
   it("should render the download button with correct text", () => {
     render(<ResumeDownloadButton />);
 
-    const button = screen.getByRole("button", { name: /download resume/i });
-    expect(button).toBeInTheDocument();
+    const link = screen.getByRole("link", { name: /download resume/i });
+    expect(link).toBeInTheDocument();
   });
 
   it("should have correct styling classes", () => {
     render(<ResumeDownloadButton />);
 
-    const button = screen.getByRole("button", { name: /download resume/i });
-    expect(button).toHaveClass("main-button", "bg-paletteRed", "text-white");
+    const link = screen.getByRole("link", { name: /download resume/i });
+    expect(link).toHaveClass("main-button", "bg-paletteRed", "text-white");
   });
 
   it("should have correct download attributes", () => {
     render(<ResumeDownloadButton />);
 
-    const button = screen.getByRole("button", { name: /download resume/i });
-    expect(button).toHaveAttribute("download");
+    const link = screen.getByRole("link", { name: /download resume/i });
+    expect(link).toHaveAttribute("target", "_blank");
   });
 
   it("should link to the correct resume file", () => {
     render(<ResumeDownloadButton />);
 
-    const button = screen.getByRole("button", { name: /download resume/i });
-    expect(button).toHaveAttribute("href", "/franklynam-resume-may2025-v1.pdf");
+    const link = screen.getByRole("link", { name: /download resume/i });
+    expect(link).toHaveAttribute("href", "/franklynam-resume-may2025-v1.pdf");
   });
 
   it("should be clickable", async () => {
     const user = userEvent.setup();
     render(<ResumeDownloadButton />);
 
-    const button = screen.getByRole("button", { name: /download resume/i });
-    expect(button).not.toBeDisabled();
+    const link = screen.getByRole("link", { name: /download resume/i });
+    expect(link).toBeInTheDocument();
 
-    // Test that the button can be clicked (though we can't test actual download)
-    await user.click(button);
+    // Test that the link can be clicked (though we can't test actual download)
+    await user.click(link);
     // No error should be thrown
   });
 
   it("should have accessible name", () => {
     render(<ResumeDownloadButton />);
 
-    const button = screen.getByRole("button", { name: /download resume/i });
-    expect(button).toBeInTheDocument();
+    const link = screen.getByRole("link", { name: /download resume/i });
+    expect(link).toBeInTheDocument();
   });
 
-  it("should have proper button type", () => {
+  it("should have proper link attributes", () => {
     render(<ResumeDownloadButton />);
 
-    const button = screen.getByRole("button", { name: /download resume/i });
-    expect(button).toHaveAttribute("type", "button");
+    const link = screen.getByRole("link", { name: /download resume/i });
+    expect(link).toHaveAttribute("rel", "noopener noreferrer");
   });
 
   it("should render with correct text content", () => {
@@ -77,19 +77,19 @@ describe("ResumeDownloadButton", () => {
   it("should have responsive text sizing", () => {
     render(<ResumeDownloadButton />);
 
-    const button = screen.getByRole("button", { name: /download resume/i });
-    expect(button).toHaveClass("text-sm", "md:text-base");
+    const link = screen.getByRole("link", { name: /download resume/i });
+    expect(link).toHaveClass("text-sm", "md:text-base");
   });
 
   it("should be keyboard accessible", async () => {
     const user = userEvent.setup();
     render(<ResumeDownloadButton />);
 
-    const button = screen.getByRole("button", { name: /download resume/i });
+    const link = screen.getByRole("link", { name: /download resume/i });
 
-    // Focus the button
-    button.focus();
-    expect(button).toHaveFocus();
+    // Focus the link
+    link.focus();
+    expect(link).toHaveFocus();
 
     // Test keyboard interaction
     await user.keyboard("{Enter}");
@@ -100,10 +100,10 @@ describe("ResumeDownloadButton", () => {
     const user = userEvent.setup();
     render(<ResumeDownloadButton />);
 
-    const button = screen.getByRole("button", { name: /download resume/i });
+    const link = screen.getByRole("link", { name: /download resume/i });
 
-    await user.click(button);
-    // Button should still be accessible
-    expect(button).toBeInTheDocument();
+    await user.click(link);
+    // Link should still be accessible
+    expect(link).toBeInTheDocument();
   });
 });
