@@ -1,5 +1,5 @@
-import { useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 
 declare global {
   interface Window {
@@ -23,7 +23,7 @@ export const useGoogleAnalytics = () => {
   // Track page views
   useEffect(() => {
     if (pathname && hasConsented() && typeof window.gtag === "function") {
-      window.gtag("config", "G-KXG1K4CEVE", {
+      window.gtag("config", process.env.NEXT_PUBLIC_GA_ID!, {
         page_path: pathname,
       });
     }

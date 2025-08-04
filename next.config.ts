@@ -11,6 +11,9 @@ const nextConfig: NextConfig = {
   env: {
     APP_VERSION: packageJson.version,
   },
+  publicRuntimeConfig: {
+    GA_ID: process.env.NEXT_PUBLIC_GA_ID,
+  },
 };
 
 export default nextConfig;

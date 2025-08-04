@@ -1,10 +1,10 @@
+import AnalyticsWrapper from "@/components/AnalyticsWrapper";
+import ConditionalAnalytics from "@/components/ConditionalAnalytics";
+import CookieConsent from "@/components/CookieConsent";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import AnalyticsWrapper from "@/components/AnalyticsWrapper";
-import CookieConsent from "@/components/CookieConsent";
-import ConditionalAnalytics from "@/components/ConditionalAnalytics";
 
 export const metadata: Metadata = {
   title: "franklynam.com",
