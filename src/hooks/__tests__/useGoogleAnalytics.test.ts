@@ -1,6 +1,9 @@
 import { act, renderHook } from "@testing-library/react";
 import { useGoogleAnalytics } from "../useGoogleAnalytics";
 
+// Mock environment variable
+process.env.NEXT_PUBLIC_GA_ID = "test-ga-id";
+
 // Mock Next.js navigation
 jest.mock("next/navigation", () => ({
   usePathname: () => "/test-page",
@@ -36,7 +39,7 @@ describe("useGoogleAnalytics", () => {
 
       renderHook(() => useGoogleAnalytics());
 
-      expect(window.gtag).toHaveBeenCalledWith("config", "G-KXG1K4CEVE", {
+      expect(window.gtag).toHaveBeenCalledWith("config", "test-ga-id", {
         page_path: "/test-page",
       });
     });

@@ -1,6 +1,9 @@
 import { act, render, screen, waitFor } from "@testing-library/react";
 import ConditionalAnalytics from "../ConditionalAnalytics";
 
+// Mock environment variable
+process.env.NEXT_PUBLIC_GA_ID = "test-ga-id";
+
 // Mock Next.js Script component
 jest.mock("next/script", () => ({
   __esModule: true,
@@ -142,7 +145,7 @@ describe("ConditionalAnalytics", () => {
       );
       expect(gtagScript).toHaveAttribute(
         "src",
-        "https://www.googletagmanager.com/gtag/js?id=G-KXG1K4CEVE"
+        "https://www.googletagmanager.com/gtag/js?id=test-ga-id"
       );
       expect(gtagScript).toHaveAttribute("strategy", "afterInteractive");
     });
